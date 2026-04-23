@@ -1,0 +1,22 @@
+create database ecomm;
+create table product (
+productid int primary key identity(1,1),
+productcategory  varchar(30),
+productname varchar(70),
+productdescription varchar(max),
+productimageUrl varchar(max)
+
+);
+create procedure insertproduct
+
+@productcategory varchar(30),
+@productname varchar(70),
+@productdescription varchar(max),
+@productimageUrl varchar(max)
+
+
+As
+begin
+insert into product (productcategory,productname,productdescription,productimageUrl) 
+values (@productcategory,@productname,@productdescription,@productimageUrl)
+end
