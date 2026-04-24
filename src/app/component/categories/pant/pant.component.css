@@ -1,0 +1,11 @@
+/* Force all card images to the same height */
+.card-img-top {
+    height: 300px;       /* You can adjust this number */
+    object-fit: cover;   /* This is the magic: it crops the image instead of stretching it */
+    object-filter: center;
+}
+
+/* Optional: Make all cards the same height even if text varies */
+.card {
+    height: 100%;
+}

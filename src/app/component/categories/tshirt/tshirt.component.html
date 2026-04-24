@@ -1,0 +1,21 @@
+
+
+<div class="row m-3"  >
+    <div class="col-4" *ngFor="let product of products;">
+        <div class="card">
+            
+            <img [src]="'http://localhost:5027/uploads/' + product.productimageUrl" 
+                 class="card-img-top" 
+                 alt="{{product.productname}}">
+            <div class="card-body">
+                <h5 class="card-title">{{product.productname}}</h5>
+                <p class="card-text">{{product.productdescription}}</p>
+                <h6 class="text-primary">{{product.productprice }}</h6>
+            
+            </div>
+
+        </div>
+    </div>
+    
+  
+

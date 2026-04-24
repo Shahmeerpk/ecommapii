@@ -1,0 +1,32 @@
+
+
+<div class="container">
+
+<form  (submit)="saveData()">
+  <div class="mb-3">
+    <label for="productname" class="form-label">Product Name</label>
+    <input type="text" name="name" [(ngModel)]="product.productname" class="form-control" id="productname" >
+    
+  </div>
+  <div class="mb-3">
+  <label for="fileupload" class="form-label">Upload Image of product</label>
+  <input class="form-control" (change)="onFileSelected($event)" [(ngModel)]="product.productimageUrl" name="fileupload" type="file" id="formFile">
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text">$</span>
+  <input type="number" step="0.01" (blur)="formatPrice()" name="productprice" [(ngModel)]="product.productprice" class="form-control" aria-label="Amount (to the nearest dollar)">
+  <!-- <span class="input-group-text">.0</span> -->
+</div>
+<select name="category" [(ngModel)]="product.productcategory" class="form-select" aria-label="Default select example">
+  <option selected>Select Category</option>
+  <option value="tshirt">Tshirt</option>
+  <option value="trouser">Trouser</option>
+  <option value="pant">Pant</option>
+</select>
+  <div class="mb-3">
+  <label for="description" class="form-label">Description of product</label>
+  <textarea class="form-control" name="description" [(ngModel)]="product.productdescription" id="description" rows="3"></textarea>
+</div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
