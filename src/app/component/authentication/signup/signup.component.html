@@ -1,0 +1,28 @@
+<form (ngSubmit)="usersignupdetail()">
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input name="emailaddress" [(ngModel)]="users.emailaddress" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+  </div>
+    <div class="form-group">
+    <label for="firstname">first Name </label>
+    <input name="firstname" [(ngModel)]="users.firstname" type="text" class="form-control" id="firstname" >
+  </div>
+    <div class="form-group">
+    <label for="lastname">Last Name </label>
+    <input name="lastname" [(ngModel)]="users.lastname" type="text" class="form-control" id="firstname" >
+  </div>
+    <div class="form-group">
+    <label for="usernumber">User Number </label>
+    <input name="usernumber" [(ngModel)]="users.usernumber" type="text" class="form-control" id="firstname" >
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input name="password"  [(ngModel)]="users.password" type="password" class="form-control" id="password">
+  </div>
+   <div class="form-group">
+    <label for="confirmPassword">Confirm Password</label>
+    <input name="confirmpassword" [(ngModel)]="users.confirmpassword" type="password" class="form-control" id="confirmPassword">
+  </div>
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>

@@ -1,0 +1,12 @@
+<form (ngSubmit)="loginform()">
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input name="email" [(ngModel)]="loginData.emailaddress" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input name="password" [(ngModel)]="loginData.password" type="password" class="form-control" id="password">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>

@@ -15,6 +15,9 @@ import { TrouserComponent } from './component/categories/trouser/trouser.compone
 import { PantComponent } from './component/categories/pant/pant.component';
 import { provideHttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SignupComponent } from './component/authentication/signup/signup.component';
+import { SignoutpageComponent } from './component/authentication/signoutpage/signoutpage.component';
+import { LoginComponent } from './component/authentication/login/login.component';
 
 
 
@@ -31,6 +34,9 @@ import { FormsModule } from '@angular/forms';
     TshirtComponent,
     TrouserComponent,
     PantComponent,
+    SignupComponent,
+    SignoutpageComponent,
+    LoginComponent,
     
     
   ],

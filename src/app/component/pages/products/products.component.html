@@ -1,36 +1,27 @@
-<div class="row m-3" >
-    <div class="col-4">
-        <div class="card">
-            <img src="assets/tshirt1.jpg" class="card-img-top" alt="tshirt iage">
-            <div class="card-body">
-                <h5 class="card-title">Tshirt</h5>
-                <p class="card-text">Different varietis of tshirt are available here</p>
-                <a routerLink="/tshirt" class="btn btn-primary">show all tshirts</a>
-            </div>
 
-        </div>
-    </div>
-    <div class="col-4">
-        <div class="card">
-            <img src="assets/trouser1.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Trouser</h5>
-                <p class="card-text">Different varietis of trouser are available here</p>
-                <a routerLink="/trouser" class="btn btn-primary">show all trousers</a>
-            </div>
 
-        </div>
-    </div>
-    <div class="col-4">
-        <div class="card">
-            <img src="assets/pant1.webp" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Pants</h5>
-                <p class="card-text">Different varietis of pants are available here</p>
-                <a routerLink="/pant" class="btn btn-primary">show all pants</a>
-            </div>
-
-        </div>
-    </div>
+<div class="products-page">
+  <div class="page-header">
+    <h1>Shop by Category</h1>
+    <p>Explore our collection of premium fashion</p>
+  </div>
+  
+  <div class="category-buttons">
+    <a routerLink="tshirt" class="category-btn tshirt">
+      <i class="fas fa-tshirt"></i>
+      <span>T-Shirts</span>
+    </a>
+    <a routerLink="trouser" class="category-btn trouser">
+      <i class="fas fa-user-tie"></i>
+      <span>Trousers</span>
+    </a>
+    <a routerLink="pant" class="category-btn pant">
+      <i class="fas fa-male"></i>
+      <span>Pants</span>
+    </a>
+  </div>
+  
+  <div class="products-content">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<!-- <app-productpage></app-productpage> -->
