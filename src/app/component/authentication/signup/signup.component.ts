@@ -64,6 +64,7 @@ export class SignupComponent {
                   }
               }
             })
+
           }
   // resetform() {
   //   this.users = {
