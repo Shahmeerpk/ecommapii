@@ -1,28 +1,145 @@
-<form (ngSubmit)="usersignupdetail()">
-  <div class="form-group">
-    <label for="email">Email address</label>
-    <input name="emailaddress" [(ngModel)]="users.emailaddress" type="email" class="form-control" id="email" aria-describedby="emailHelp">
-  </div>
-    <div class="form-group">
-    <label for="firstname">first Name </label>
-    <input name="firstname" [(ngModel)]="users.firstname" type="text" class="form-control" id="firstname" >
-  </div>
-    <div class="form-group">
-    <label for="lastname">Last Name </label>
-    <input name="lastname" [(ngModel)]="users.lastname" type="text" class="form-control" id="firstname" >
-  </div>
-    <div class="form-group">
-    <label for="usernumber">User Number </label>
-    <input name="usernumber" [(ngModel)]="users.usernumber" type="text" class="form-control" id="firstname" >
-  </div>
+<div class="signup-wrapper">
+  <div class="signup-container">
+    <div class="signup-header">
+      <h2><i class="fas fa-shopping-bag me-2"></i>ShopHub</h2>
+      <p>Create your account and start shopping</p>
+    </div>
 
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input name="password"  [(ngModel)]="users.password" type="password" class="form-control" id="password">
+    <form #signupForm="ngForm" (ngSubmit)="usersignupdetail()">
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input 
+          name="emailaddress" 
+          [(ngModel)]="users.emailaddress" 
+          #email="ngModel" 
+          type="email" 
+          class="form-control" 
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          id="email" 
+          placeholder="Enter your email"
+          email
+          required>
+        <div *ngIf="email.invalid && email.touched">
+          <small class="form-error" *ngIf="email.errors?.['required']"><i class="fas fa-exclamation-circle me-1"></i>Email address is required</small>
+          <small class="form-error" *ngIf="email.errors?.['pattern']"><i class="fas fa-exclamation-circle me-1"></i>Please enter a valid email</small>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstname">First Name</label>
+          <input 
+            name="firstname" 
+            [(ngModel)]="users.firstname" 
+            #fname="ngModel" 
+            type="text" 
+            class="form-control" 
+            id="firstname" 
+            placeholder="First name"
+            required>
+          <small class="form-error" *ngIf="fname.invalid && fname.touched"><i class="fas fa-exclamation-circle me-1"></i>First name is required</small>
+        </div>
+        
+        <div class="form-group">
+          <label for="lastname">Last Name</label>
+          <input 
+            name="lastname" 
+            [(ngModel)]="users.lastname" 
+            #lname="ngModel" 
+            type="text" 
+            class="form-control" 
+            id="lastname" 
+            placeholder="Last name"
+            required>
+          <small class="form-error" *ngIf="lname.invalid && lname.touched"><i class="fas fa-exclamation-circle me-1"></i>Last name is required</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="usernumber">Phone Number</label>
+        <input 
+          name="usernumber" 
+          pattern="^0\d{10}$" 
+          [(ngModel)]="users.usernumber" 
+          #unumber="ngModel" 
+          type="tel" 
+          autocomplete="nopassword-autofill-randomstring"
+          class="form-control" 
+          id="usernumber" 
+          
+          placeholder="03001234567"
+          required>
+        <div *ngIf="unumber.invalid && unumber.touched">
+          <small class="form-error" *ngIf="unumber.errors?.['required']"><i class="fas fa-exclamation-circle me-1"></i>Phone number is required</small>
+          <small class="form-error" *ngIf="unumber.errors?.['pattern']"><i class="fas fa-exclamation-circle me-1"></i>Must start with 0 and be 11 digits (e.g., 03001234567)</small>
+        </div>
+      </div>
+      <div class="form-group">
+
+        <label for="rolename">Your Role</label>
+        <select 
+          name="rolename" 
+          [(ngModel)]="users.rolename" 
+          #role="ngModel" 
+          class="form-control" 
+          id="rolename" 
+          required>
+          <option value="">Select your role</option>
+          <option value="seller">Seller</option>
+          <option value="buyer">Buyer</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            name="password" 
+            [(ngModel)]="users.password" 
+            #pass="ngModel" 
+            type="password" 
+            class="form-control" 
+            id="password" 
+            placeholder="Create a password"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+            required>
+            <div  *ngIf="pass.invalid && pass.touched">
+              <small class="form-error" *ngIf="pass.errors?.['required']"><i class="fas fa-exclamation-circle me-1"></i>Password is required</small>
+          <small class="form-error" *ngIf="pass.errors?.['pattern']"><i class="fas fa-exclamation-circle me-1"></i>Password must be at least 8 characters long and include uppercase, lowercase, number, and special character</small>
+            </div>
+          
+        </div>
+        
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input 
+            name="confirmpassword" 
+            [(ngModel)]="users.confirmpassword" 
+            #conpass="ngModel" 
+            type="password" 
+            class="form-control" 
+            id="confirmPassword" 
+            placeholder="Confirm password"
+            (input)="checkPasswordMatch()"
+            required>
+          <div *ngIf="conpass.invalid && conpass.touched">
+            <small class="form-error" *ngIf="conpass.errors?.['required']"><i class="fas fa-exclamation-circle me-1"></i>Confirm your password</small>
+          </div>
+          <small class="form-error" *ngIf="!passwordmatch"><i class="fas fa-exclamation-circle me-1"></i>Passwords do not match</small>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="signupForm.invalid || !passwordmatch" class="btn btn-primary">
+        <i class="fas fa-user-plus me-2"></i>Create Account
+      </button>
+      <div *ngIf="errorMessage" class="form-error mt-3">
+        <i class="fas fa-exclamation-circle me-1"></i>{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="login-link">
+      <span>Already have an account? <a routerLink="/login">Log in here</a></span>
+    </div>
   </div>
-   <div class="form-group">
-    <label for="confirmPassword">Confirm Password</label>
-    <input name="confirmpassword" [(ngModel)]="users.confirmpassword" type="password" class="form-control" id="confirmPassword">
-  </div>
-  <button type="submit" class="btn btn-primary">Sign Up</button>
-</form>
+</div>

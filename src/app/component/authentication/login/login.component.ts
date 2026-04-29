@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  logindone: boolean| null = null;
   loginData = {
     emailaddress: '',
     password: ''
@@ -15,16 +16,12 @@ export class LoginComponent {
   loginform() {
     this.productService.login(this.loginData).subscribe({
       next: (res) => {
-        // console.log('Login successful:', res);
-        // alert('Login successful!');
-        this.productService.updateLoginStatus(true);
-        localStorage.setItem('userEmail', res.emailaddress);
-         localStorage.setItem('firstname', res.firstname);
-        
+        this.logindone = true;
         this.router.navigate(['/']);
       },
       error: (err) => {
         console.error('Login failed:', err);
+        this.logindone = false;
       }
   });
 

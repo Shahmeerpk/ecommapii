@@ -1,21 +1,16 @@
-
-
-<div class="row m-3"  >
-    <div class="col-4" *ngFor="let product of products;">
-        <div class="card">
-            
-            <img [src]="'http://localhost:5027/uploads/' + product.productimageUrl" 
-                 class="card-img-top" 
-                 alt="{{product.productname}}">
-            <div class="card-body">
-                <h5 class="card-title">{{product.productname}}</h5>
-                <p class="card-text">{{product.productdescription}}</p>
-                <h6 class="text-primary">{{ product.productprice | currency:'PKR':'Rs ' : '1.2-2' }}</h6>
-            
-            </div>
-
-        </div>
+<div class="products-grid">
+  <div *ngFor="let product of products;" class="product-card-wrapper">
+    <div class="card">
+      <img 
+        [src]="'http://localhost:5027/uploads/' + product.productimageUrl" 
+        class="card-img-top" 
+        alt="{{product.productname}}"
+        loading="lazy">
+      <div class="card-body">
+        <h5 class="card-title">{{product.productname}}</h5>
+        <p class="card-text">{{product.productdescription}}</p>
+        <p class="text-primary">{{ product.productprice | currency:'PKR':'Rs ' : '1.2-2' }}</p>
+      </div>
     </div>
-    
-  
-
+  </div>
+</div>

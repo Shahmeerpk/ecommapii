@@ -13,12 +13,13 @@ import { AddproductComponent } from './component/pages/addproduct/addproduct.com
 import { TshirtComponent } from './component/categories/tshirt/tshirt.component';
 import { TrouserComponent } from './component/categories/trouser/trouser.component';
 import { PantComponent } from './component/categories/pant/pant.component';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient,withInterceptors } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SignupComponent } from './component/authentication/signup/signup.component';
-import { SignoutpageComponent } from './component/authentication/signoutpage/signoutpage.component';
-import { LoginComponent } from './component/authentication/login/login.component';
 
+import { LoginComponent } from './component/authentication/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {jwtInterceptor} from './jwt.interceptor'
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { LoginComponent } from './component/authentication/login/login.component
     TrouserComponent,
     PantComponent,
     SignupComponent,
-    SignoutpageComponent,
+   
     LoginComponent,
     
     
@@ -43,10 +44,11 @@ import { LoginComponent } from './component/authentication/login/login.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([jwtInterceptor])),
     
   ],
   bootstrap: [AppComponent]

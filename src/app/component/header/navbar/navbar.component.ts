@@ -10,22 +10,32 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   isLoggedIn: boolean = false;
   username: string | null = null;
+  buyer: boolean = false;
+  seller: boolean = false;
 
-
-  constructor(private productService: ProductService, private router: Router) {}
-   ngOnInit() {
+  constructor(private productService: ProductService, private router: Router) { }
+  ngOnInit() {
     this.productService.isLoggedIn$.subscribe(status => {
       this.isLoggedIn = status; // 4. Added 'this.'
-      this.username = localStorage.getItem('firstname');
-    });
-  }
 
-    Onlogout(){
-      localStorage.removeItem('userEmail');
-      localStorage.removeItem('firstname');
-      this.productService.updateLoginStatus(false);
+    });
+    this.productService.userName$.subscribe(name => {
+      this.username = name; // This updates automatically without refresh!
+    });
+    this.productService.userRole$.subscribe(role => {
+      this.buyer = (role === 'buyer');
+      this.seller = (role === 'seller');
+
+    });
+
+   console.log(this.buyer)
+   console.log(this.seller)
+
+
+  }
+  Onlogout(){
+      this.productService.logout();
       this.router.navigate(['/login']);
     }
-  
-
 }
+

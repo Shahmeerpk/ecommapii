@@ -18,12 +18,12 @@
             <i class="fas fa-info-circle me-1"></i>About
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="isLoggedIn&& !buyer &&seller">
           <a class="nav-link" routerLink="addproduct" routerLinkActive="active">
             <i class="fas fa-plus-circle me-1"></i>Add Product
           </a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="isLoggedIn && buyer && !seller">
           <a class="nav-link dropdown-toggle" routerLink="products" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-th-large me-1"></i>Categories
           </a>
@@ -33,9 +33,10 @@
             <li><a class="dropdown-item" routerLink="products/pant"><i class="fas fa-male me-2"></i>Pants</a></li>
           </ul>
           <li class="nav-item" *ngIf="isLoggedIn">
-          <a class="nav-link" routerLink="signup" routerLinkActive="active" >
-           hello {{username}}
+          <a class="nav-link"  routerLinkActive="active" >
+           Hello {{username}}
           </a>
+        </li>
 
            <li class="nav-item" *ngIf="!isLoggedIn">
           <a class="nav-link" routerLink="signup" routerLinkActive="active">
