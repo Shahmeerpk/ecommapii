@@ -13,13 +13,13 @@ export class PantComponent {
   constructor(private productService: ProductService){
     productService.getcategory("pant").subscribe({
       next:(res)=>{
-        console.log('Successfully saved to SQL:', res);
+        console.log('Successfully retrieved from SQL:', res);
        this.products =res;
 
       },
        error: (err)=>{
           console.error('API Error:', err);
-        alert('Failed to save product. Check the console.');
+        alert('Failed to get product. Check the console.');
         }
     })
   }

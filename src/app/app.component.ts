@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  constructor() {console.log("app component loaded")}
   title = 'guiapi';
 }
